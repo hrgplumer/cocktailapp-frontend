@@ -1,0 +1,6 @@
+.header-image {
+    background-image: url("../assets/img/martini-128.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

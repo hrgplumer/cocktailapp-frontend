@@ -1,0 +1,18 @@
+
+<mat-card class="cocktail-card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Cocktail Recipe Finder</mat-card-title>
+    <mat-card-subtitle>Build your home bar to find out which recipes you can make right now!</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+<mat-form-field>
+    <input type="text" placeholder="Add your ingredients" aria-label="Number" matInput [(ngModel)]="ingredientSelection" [matAutocomplete]="auto" >
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-card-content>
+</mat-card>
