@@ -1,0 +1,12 @@
+.ingredient {
+    flex: 1 1 auto;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 10px;
+}
+
+.deleteIcon {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}

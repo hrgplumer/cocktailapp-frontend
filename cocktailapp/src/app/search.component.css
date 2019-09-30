@@ -4,3 +4,11 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.ingredients-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center space-around;
+    align-content: space-around;
+}
