@@ -44,6 +44,10 @@ export class SearchComponent implements OnInit {
         this.ingredientsList.push(ingredient);
     }
 
+    add(a, b) {
+        return a + b;
+    }
+
     /**
      * This is called by the child IngredientComponent when an ingredient is removed from the UI.
      * @param ingredient The ingredient to delete.
