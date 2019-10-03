@@ -9,9 +9,11 @@ import {MatInputModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
+import { CocktailDbService } from './cocktaildb.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,10 @@ import { IngredientComponent } from './ingredient.component';
     MatInputModule,
     MatCardModule,
     FontAwesomeModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ CocktailDbService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

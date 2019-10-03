@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-form-field>
-      <input type="text" placeholder="Add your ingredients" aria-label="Number" matInput
+      <input type="text" placeholder="Add your ingredients" aria-label="Ingredient" matInput
         [(ngModel)]="ingredientSelection" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -15,7 +15,7 @@
       </mat-autocomplete>
     </mat-form-field>
     <div class="ingredients-list">
-      <ingredient *ngFor="let ing of ingredientsList" [ingredient]="ing" (deleted)="onIngredientDeleted($event)">
+      <ingredient *ngFor="let ing of ingredientsList" [ingredientName]="ing" (deleted)="onIngredientDeleted($event)">
       </ingredient>
     </div>
   </mat-card-content>

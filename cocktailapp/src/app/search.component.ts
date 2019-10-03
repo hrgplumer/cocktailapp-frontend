@@ -2,31 +2,37 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { CocktailDbService } from './cocktaildb.service';
 
 @Component({
     selector: 'search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css'] //, 'node_modules/primeflex/primeflex.css'
+    styleUrls: ['./search.component.css'] 
 })
 export class SearchComponent implements OnInit {
 
     myControl = new FormControl();
-    options: string[] = ['Gin', 'Vodka', 'Tequila'];
+    options: any = null;
     filteredOptions: Observable<string[]>;
 
     ingredientSelection: string;
 
     ingredientsList: Array<string>;
 
-    constructor() {
+    constructor(private api: CocktailDbService) {
         this.ingredientsList = new Array<string>();
     }
 
     ngOnInit() {
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-            startWith(''),
-            map(value => this._filter(value))
-        );
+        // Populate the autocomplete with the ingredients list from the api
+        this.api.getIngredients().subscribe((ing: any) => {
+            // The api returns a list in the form { drinks: [{strIngredient1: "Rum"}, {strIngredient1: "Brandy"}]} etc...            
+            this.options = ing.drinks.map(drink => drink.strIngredient1);
+            this.filteredOptions = this.myControl.valueChanges.pipe(
+                startWith(''),
+                map(value => this._filter(value))
+            );
+        });
     }
 
     onOptionSelected() {

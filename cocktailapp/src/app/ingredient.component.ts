@@ -1,27 +1,61 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { CocktailDbService } from './cocktaildb.service';
 
 @Component({
   selector: 'ingredient',
   templateUrl: './ingredient.component.html',
   styleUrls: ['./ingredient.component.css']
 })
-export class IngredientComponent {
+export class IngredientComponent implements OnInit {
 
-  faTrash = faTrash;
+  constructor(private api: CocktailDbService) {
+    this.deleted = new EventEmitter<string>();
+  }
+
+  ngOnInit() {
+    this.api.getIngredientByName(this.ingredientName).subscribe((ing: any) => {
+      let theIngredient = ing.ingredients[0];
+      // Figure out a way to not display this stuff until done. Promise/observable?
+      this.ingredient = this.createIngredient(
+        theIngredient.idIngredient,
+        theIngredient.strIngredient,
+        theIngredient.strDescription,
+        theIngredient.strType,
+        theIngredient.strABV);
+    });
+  }
+
+  faTrash: IconDefinition = faTrash;
 
   @Input()
-  ingredient: string;
+  ingredientName: string;
 
   @Output()
   deleted: EventEmitter<string>;
 
-  constructor() {
-    this.deleted = new EventEmitter<string>();
-  }
+  ingredient: Ingredient = {};
 
   delete() {
-    this.deleted.emit(this.ingredient);
+    this.deleted.emit(this.ingredientName);
   }
 
+  private createIngredient(id: string, name: string, description: string, type: string, abv: string): Ingredient {
+    return {
+      id: id,
+      name: name,
+      description: description,
+      type: type,
+      abv: abv
+    };
+  }
+
+}
+
+interface Ingredient {
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  abv: string;
 }
