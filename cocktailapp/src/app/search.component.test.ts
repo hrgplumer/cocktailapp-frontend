@@ -1,7 +1,8 @@
-test('Adds 2 + 2 to equal 4', () => {
-    expect(add(2,2)).toBe(4);
-});
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { SearchComponent } from './search.component';
+// import { Injectable } from '@angular/core';
 
-function add(a,b) {
-    return a + b;
-}
+// @Injectable()
+// class MockCocktailDbService
+
+test('default tester', () => {expect(true).toBeTruthy()});

@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "emitDecoratorMetadata": true, // Needed for jest in NG 8
     "outDir": "./out-tsc/spec",
     "types": [
       "jasmine",
