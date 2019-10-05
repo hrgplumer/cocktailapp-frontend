@@ -3,11 +3,12 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CocktailDbService } from './cocktaildb.service';
+import { Ingredient } from './ingredient.interface';
 
 @Component({
     selector: 'search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css'] 
+    styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
 
@@ -17,10 +18,10 @@ export class SearchComponent implements OnInit {
 
     ingredientSelection: string;
 
-    ingredientsList: Array<string>;
+    ingredientsList: Array<Ingredient>;
 
     constructor(private api: CocktailDbService) {
-        this.ingredientsList = new Array<string>();
+        this.ingredientsList = new Array<Ingredient>();
     }
 
     ngOnInit() {
@@ -41,18 +42,28 @@ export class SearchComponent implements OnInit {
 
     addIngredient(ingredient: string) {
         console.log(`adding ingredient ${ingredient}`);
-        this.ingredientsList.push(ingredient);
+        this.api.getIngredientByName(ingredient).subscribe((ing: any) => {
+            let theIngredient = ing.ingredients[0];
+
+            this.ingredientsList.push(this.createIngredient(
+                theIngredient.idIngredient,
+                theIngredient.strIngredient,
+                theIngredient.strDescription,
+                theIngredient.strType,
+                theIngredient.strABV));
+        });
+
     }
 
     /**
      * This is called by the child IngredientComponent when an ingredient is removed from the UI.
      * @param ingredient The ingredient to delete.
      */
-    onIngredientDeleted(ingredient:string) {
+    onIngredientDeleted(ingredient: string) {
         console.log(`deleted ingredient ${ingredient}`);
         // Remove ingredient
         this.ingredientsList = this.ingredientsList.filter(element => {
-            return element !== ingredient;
+            return element.name !== ingredient;
         });
     }
 
@@ -62,4 +73,15 @@ export class SearchComponent implements OnInit {
 
         return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
     }
+
+    private createIngredient(id: string, name: string, description: string, type: string, abv: string): Ingredient {
+        return {
+            id: id,
+            name: name,
+            description: description,
+            type: type,
+            abv: abv
+        };
+    }
+
 }
