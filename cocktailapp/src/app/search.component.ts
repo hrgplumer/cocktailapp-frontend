@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
     addIngredient(ingredient: string) {
         console.log(`adding ingredient ${ingredient}`);
         this.api.getIngredientByName(ingredient).subscribe((ing: any) => {
-            let theIngredient = ing.ingredients[0];
+            let theIngredient = ing.ingredients[0]; 
 
             this.ingredientsList.push(this.createIngredient(
                 theIngredient.idIngredient,

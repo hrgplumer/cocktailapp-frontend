@@ -32,7 +32,7 @@ import { CocktailDbService } from './cocktaildb.service';
     MatCardModule,
     FontAwesomeModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ CocktailDbService ],
