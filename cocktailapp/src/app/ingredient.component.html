@@ -3,8 +3,8 @@
         <button mat-raised-button color="warn" (click)="delete()" class="deleteIcon">
             <fa-icon [icon]="faTrash"></fa-icon>
         </button>
-        <p>{{ingredientName}}</p>
-        <p>
+        <p class="ingredient-name">{{ingredientName || 'New Ingredient' }}</p>
+        <p class="ingredient-desc">
             {{ingredient.description}}
         </p>
     </mat-card-content>

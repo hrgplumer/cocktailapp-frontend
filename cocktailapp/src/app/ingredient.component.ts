@@ -34,7 +34,13 @@ export class IngredientComponent implements OnInit {
   @Output()
   deleted: EventEmitter<string>;
 
-  ingredient: Ingredient = {};
+  ingredient: Ingredient = {
+    id: null,
+    name: null,
+    description: null,
+    type: null,
+    abv: null
+  };
 
   delete() {
     this.deleted.emit(this.ingredientName);
