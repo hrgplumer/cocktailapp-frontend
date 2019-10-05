@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Ingredient } from './ingredient.interface';
 
@@ -7,14 +7,10 @@ import { Ingredient } from './ingredient.interface';
   templateUrl: './ingredient.component.html',
   styleUrls: ['./ingredient.component.css']
 })
-export class IngredientComponent implements OnInit {
+export class IngredientComponent {
 
   constructor() {
     this.deleted = new EventEmitter<string>();
-  }
-
-  ngOnInit() {
-
   }
 
   faTrash: IconDefinition = faTrash;
