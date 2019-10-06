@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CocktailDbService } from './cocktaildb.service';
 import { Ingredient } from './ingredient.interface';
+import { IngredientService } from './ingredient.service';
 
 @Component({
     selector: 'search',
@@ -17,10 +18,7 @@ export class SearchComponent implements OnInit {
 
     ingredientSelection: string;
 
-    ingredientsList: Array<Ingredient>;
-
-    constructor(private api: CocktailDbService) {
-        this.ingredientsList = new Array<Ingredient>();
+    constructor(private api: CocktailDbService, private ingService: IngredientService) {
     }
 
     ngOnInit() {
@@ -47,7 +45,6 @@ export class SearchComponent implements OnInit {
      * @param ingredient The name of the ingredient added
      */
     getIngredient(ingredient: string, callback) {
-        console.log(`adding ingredient ${ingredient}`);
         this.api.getIngredientByName(ingredient).subscribe(
             (ing: any) => {
                 let theIngredient = ing.ingredients[0];
@@ -74,7 +71,7 @@ export class SearchComponent implements OnInit {
      * @param ing The ingredient to add
      */
     addToIngredientsList(ing: Ingredient) {
-        this.ingredientsList.push(ing);
+        this.ingService.addIngredient(ing);
     }
 
     /**
@@ -82,11 +79,7 @@ export class SearchComponent implements OnInit {
      * @param ingredient The ingredient to delete.
      */
     onIngredientDeleted(ingredient: string) {
-        console.log(`deleted ingredient ${ingredient}`);
-        // Remove ingredient
-        this.ingredientsList = this.ingredientsList.filter(element => {
-            return element.name !== ingredient;
-        });
+        this.ingService.removeIngredient(ingredient);
     }
 
     /* Utility method required for autocomplete control */

@@ -15,6 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
 import { CocktailDbService } from './cocktaildb.service';
+import { IngredientService } from './ingredient.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { CocktailDbService } from './cocktaildb.service';
     NgbModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ CocktailDbService ],
+  providers: [ CocktailDbService, IngredientService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

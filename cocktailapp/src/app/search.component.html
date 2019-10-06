@@ -15,7 +15,7 @@
       </mat-autocomplete>
     </mat-form-field>
     <div class="ingredients-list">
-      <ingredient *ngFor="let ing of ingredientsList" [ingredient]="ing" (deleted)="onIngredientDeleted($event)">
+      <ingredient *ngFor="let ing of ingService.ingredientList" [ingredient]="ing" (deleted)="onIngredientDeleted($event)">
       </ingredient>
     </div>
   </mat-card-content>
