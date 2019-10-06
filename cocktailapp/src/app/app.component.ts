@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppAssets } from './app.assets';
+import { IngredientService } from './ingredient.service';
+import { CocktailDbService } from './cocktaildb.service';
 import { Ingredient } from './ingredient.interface';
 
 @Component({
@@ -7,17 +9,20 @@ import { Ingredient } from './ingredient.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'cocktailapp';
-  key = 9973533 + ''; // not great, but its fine for a demo app
 
-  ingredientsList: Array<Ingredient>;
+  ingredients: string = '';
 
-  constructor() {
-    AppAssets.API_KEY = this.key;
+  constructor(private ingService: IngredientService, private api: CocktailDbService) {
+    ingService.currentIngredients.subscribe(res => {
+      this.ingredients = res;
+      console.log(this.ingredients);
+    })
+  }
+
+  ngOnInit() {
     Object.freeze(AppAssets);
-
-    this.ingredientsList = new Array<Ingredient>();
   }
 }
 
