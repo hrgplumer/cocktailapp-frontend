@@ -36,23 +36,47 @@ export class SearchComponent implements OnInit {
         });
     }
 
+    /**
+     * Fired when user selects an option from the dropdown
+     */
     onOptionSelected() {
-        this.addIngredient(this.ingredientSelection);
+        let ing = this.getIngredient(this.ingredientSelection);
+        this.addToIngredientsList(ing);
     }
 
-    addIngredient(ingredient: string) {
+    /**
+     * Gets ingredient data from the API and returns the new Ingredient.
+     * @param ingredient The name of the ingredient added
+     */
+    getIngredient(ingredient: string): Ingredient {
         console.log(`adding ingredient ${ingredient}`);
-        this.api.getIngredientByName(ingredient).subscribe((ing: any) => {
-            let theIngredient = ing.ingredients[0]; 
+        this.api.getIngredientByName(ingredient).subscribe(
+            (ing: any) => {
+                let theIngredient = ing.ingredients[0];
 
-            this.ingredientsList.push(this.createIngredient(
-                theIngredient.idIngredient,
-                theIngredient.strIngredient,
-                theIngredient.strDescription,
-                theIngredient.strType,
-                theIngredient.strABV));
-        });
+                let newIngredient = <Ingredient>{
+                    id: theIngredient.idIngredient,
+                    name: theIngredient.strIngredient,
+                    description: theIngredient.strDescription,
+                    type: theIngredient.strType,
+                    abv: theIngredient.strABV
+                };
 
+                return newIngredient;
+            },
+            (err) => {
+                console.error(`Could not get ${ingredient} from the server: ${err}`);
+            });
+
+        return null;
+    }
+
+    /**
+     * Adds this Ingredient to the ingredients list.
+     * @param ing The ingredient to add
+     */
+    addToIngredientsList(ing: Ingredient) {
+        this.ingredientsList.push(ing);
     }
 
     /**
@@ -73,15 +97,4 @@ export class SearchComponent implements OnInit {
 
         return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
     }
-
-    private createIngredient(id: string, name: string, description: string, type: string, abv: string): Ingredient {
-        return {
-            id: id,
-            name: name,
-            description: description,
-            type: type,
-            abv: abv
-        };
-    }
-
 }

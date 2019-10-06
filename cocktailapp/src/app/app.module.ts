@@ -10,10 +10,12 @@ import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
 import { CocktailDbService } from './cocktaildb.service';
+import { AppAssetsService } from './app.assets.service';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { CocktailDbService } from './cocktaildb.service';
     FontAwesomeModule,
     MatButtonModule,
     HttpClientModule,
+    NgbModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ CocktailDbService ],
+  providers: [ CocktailDbService, AppAssetsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
