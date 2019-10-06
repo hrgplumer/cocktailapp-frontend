@@ -11,7 +11,6 @@ import { Ingredient } from './ingredient.interface';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
     myControl = new FormControl();
     options: any = null;
     filteredOptions: Observable<string[]>;

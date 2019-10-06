@@ -4,7 +4,6 @@ import { AppAssets } from './app.assets';
 
 @Injectable()
 export class CocktailDbService {
-
     /**
      * The Cocktail API: https://www.thecocktaildb.com/
      */
@@ -14,15 +13,28 @@ export class CocktailDbService {
         this.apiUrl = AppAssets.BASE_API_URL + AppAssets.API_KEY + '/';
     }
 
+    /**
+     * Get the full list of ingredients from the Cocktail API.
+     */
     getIngredients() {
         let url = this.apiUrl + 'list.php?i=list';
         return this.http.get(url);
     }
 
+    /**
+     * Search the list of cocktail ingredients by name.
+     * @param name The ingredient name to search for
+     */
     getIngredientByName(name: string) {
         let url = this.apiUrl + `search.php?i=${name}`;
         return this.http.get(url);
     }
 
-
+    /**
+     * Search for cocktails that contain all of the ingredients in the input list.
+     * @param list The list of Ingredients to search for
+     */
+    getCocktailsByIngredientsList(list: Array<string>) {
+        return this.http.get(this.apiUrl + `filter.php?i=${list.join(',')}`);
+    }
 }
