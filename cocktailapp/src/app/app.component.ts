@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppAssets } from './app.assets';
 import { IngredientService } from './ingredient.service';
 import { CocktailDbService } from './cocktaildb.service';
-import { Ingredient } from './ingredient.interface';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
   constructor(private ingService: IngredientService, private api: CocktailDbService) {
     ingService.currentIngredients.subscribe(res => {
       this.ingredients = res;
-      console.log(this.ingredients);
     })
   }
 

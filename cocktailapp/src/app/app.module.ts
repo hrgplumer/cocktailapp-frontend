@@ -16,12 +16,16 @@ import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
 import { CocktailDbService } from './cocktaildb.service';
 import { IngredientService } from './ingredient.service';
+import { CocktailComponent } from './cocktail.component';
+import { CocktailListComponent } from './cocktail-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    IngredientComponent
+    IngredientComponent,
+    CocktailComponent,
+    CocktailListComponent
   ],
   imports: [
     BrowserModule,
