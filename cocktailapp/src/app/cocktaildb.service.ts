@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppAssets } from './app.assets';
 
 @Injectable()
 export class CocktailDbService {
@@ -7,17 +8,19 @@ export class CocktailDbService {
     /**
      * The Cocktail API: https://www.thecocktaildb.com/
      */
-    private baseApiUrl: string = 'https://www.thecocktaildb.com/api/json/v1/1/';
+    readonly apiUrl;
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient){
+        this.apiUrl = AppAssets.BASE_API_URL + AppAssets.API_KEY + '/';
+    }
 
     getIngredients() {
-        let url = this.baseApiUrl + 'list.php?i=list';
+        let url = this.apiUrl + 'list.php?i=list';
         return this.http.get(url);
     }
 
     getIngredientByName(name: string) {
-        let url = this.baseApiUrl + `search.php?i=${name}`;
+        let url = this.apiUrl + `search.php?i=${name}`;
         return this.http.get(url);
     }
 

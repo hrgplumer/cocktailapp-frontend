@@ -40,15 +40,14 @@ export class SearchComponent implements OnInit {
      * Fired when user selects an option from the dropdown
      */
     onOptionSelected() {
-        let ing = this.getIngredient(this.ingredientSelection);
-        this.addToIngredientsList(ing);
+        this.getIngredient(this.ingredientSelection, this.addToIngredientsList.bind(this));
     }
 
     /**
      * Gets ingredient data from the API and returns the new Ingredient.
      * @param ingredient The name of the ingredient added
      */
-    getIngredient(ingredient: string): Ingredient {
+    getIngredient(ingredient: string, callback) {
         console.log(`adding ingredient ${ingredient}`);
         this.api.getIngredientByName(ingredient).subscribe(
             (ing: any) => {
@@ -62,7 +61,7 @@ export class SearchComponent implements OnInit {
                     abv: theIngredient.strABV
                 };
 
-                return newIngredient;
+                callback(newIngredient);
             },
             (err) => {
                 console.error(`Could not get ${ingredient} from the server: ${err}`);

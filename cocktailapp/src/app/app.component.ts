@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppAssets } from './app.assets';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cocktailapp';
+  key = 9973533 + ''; // not great, but its fine for a demo app
+
+  constructor() {
+    AppAssets.API_KEY = this.key;
+    Object.freeze(AppAssets);
+  }
 }
+
