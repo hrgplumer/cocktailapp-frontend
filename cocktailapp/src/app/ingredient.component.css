@@ -1,8 +1,11 @@
 .ingredient {
     flex: 1 1 auto;
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 200px;
+    max-height: 200px;
     margin: 10px;
+    overflow: hidden;
 }
 
 .deleteIcon {

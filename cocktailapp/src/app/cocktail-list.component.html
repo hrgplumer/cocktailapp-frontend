@@ -6,6 +6,8 @@
         <mat-card-subtitle>With your ingredients at home, try these cocktails!</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <cocktail [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></cocktail>
+        <div class="cocktail-list">
+            <cocktail [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></cocktail>
+        </div>
     </mat-card-content>
 </mat-card>

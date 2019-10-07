@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Cocktail } from './cocktail.interface';
 
 @Component({
@@ -7,10 +7,6 @@ import { Cocktail } from './cocktail.interface';
     styleUrls: ['./cocktail.component.css']
 })
 export class CocktailComponent {
-
-    constructor() {
-    }
-
     @Input()
     cocktail: Cocktail;
 }

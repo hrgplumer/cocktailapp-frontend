@@ -27,6 +27,7 @@ export class CocktailListComponent {
             let theDrinks = drinks.drinks;
             // Use new array for new ingredients
             this.cocktails.splice(0, this.cocktails.length);
+            
             if (Array.isArray(theDrinks)) {
                 theDrinks.forEach(drink => {
                     this.cocktails.push(<Cocktail>{
