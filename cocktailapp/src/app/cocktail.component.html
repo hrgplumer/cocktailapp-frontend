@@ -1,0 +1,9 @@
+<mat-card class="cocktail">
+    <mat-card-content>
+        <!-- <button mat-raised-button color="warn" (click)="delete()" class="deleteIcon">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </button> -->
+        <p class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</p>
+        <img class="img-fluid" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}"/>
+    </mat-card-content>
+</mat-card>

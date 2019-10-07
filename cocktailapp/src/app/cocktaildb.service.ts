@@ -32,9 +32,9 @@ export class CocktailDbService {
 
     /**
      * Search for cocktails that contain all of the ingredients in the input list.
-     * @param list The list of Ingredients to search for
+     * @param list The list of ingredients to search: a comma delimited string
      */
-    getCocktailsByIngredientsList(list: Array<string>) {
-        return this.http.get(this.apiUrl + `filter.php?i=${list.join(',')}`);
+    getCocktailsByIngredientsList(list: string) {
+        return this.http.get(this.apiUrl + `filter.php?i=${list}`);
     }
 }

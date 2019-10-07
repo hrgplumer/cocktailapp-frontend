@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { IngredientService } from './ingredient.service';
 import { CocktailDbService } from './cocktaildb.service';
+import { Cocktail } from './cocktail.interface';
+import { concatMap } from 'rxjs/operators';
 
 @Component({
     selector: 'cocktail-list',
@@ -10,11 +12,30 @@ import { CocktailDbService } from './cocktaildb.service';
 export class CocktailListComponent {
     title = 'cocktailapp';
 
-    ingredients: string = '';
+    cocktails: Array<Cocktail>;
 
     constructor(private api: CocktailDbService, private ingService: IngredientService) {
-        this.ingService.currentIngredients.subscribe(res => {
-            this.ingredients = res;
+        this.cocktails = new Array<Cocktail>();
+
+        // Flatten nested observable
+        const pipe = this.ingService.currentIngredients.pipe(
+            concatMap(res => this.api.getCocktailsByIngredientsList(res))
+        );
+
+        // Map the array to a list of cocktails
+        pipe.subscribe((drinks: any) => {
+            let theDrinks = drinks.drinks;
+            // Use new array for new ingredients
+            this.cocktails.splice(0, this.cocktails.length);
+            if (Array.isArray(theDrinks)) {
+                theDrinks.forEach(drink => {
+                    this.cocktails.push(<Cocktail>{
+                        id: drink.idDrink,
+                        name: drink.strDrink,
+                        thumbnail: drink.strDrinkThumb
+                    });
+                });
+            }
         });
     }
 }

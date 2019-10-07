@@ -1,1 +1,11 @@
-dsfdsfdsf
+<mat-card class="cocktail-card" *ngIf="cocktails">
+    <mat-card-header>
+        <mat-card-title>
+            Cocktails you can make
+        </mat-card-title>
+        <mat-card-subtitle>With your ingredients at home, try these cocktails!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <cocktail [cocktail]="cocktail" *ngFor="let cocktail of cocktails"></cocktail>
+    </mat-card-content>
+</mat-card>
