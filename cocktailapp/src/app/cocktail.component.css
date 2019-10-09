@@ -6,3 +6,7 @@
     max-height: 200px;
     margin: 10px;
 }
+
+.cocktail:hover {
+    cursor: pointer;
+}

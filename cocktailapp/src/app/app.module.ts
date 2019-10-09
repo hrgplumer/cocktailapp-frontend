@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule} from '@angular/router';
 
 import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
@@ -18,6 +19,13 @@ import { CocktailDbService } from './cocktaildb.service';
 import { IngredientService } from './ingredient.service';
 import { CocktailComponent } from './cocktail.component';
 import { CocktailListComponent } from './cocktail-list.component';
+import { CocktailDetailComponent } from './cocktail-detail.component';
+import { HomeComponent } from './home.component';
+
+const routes = [
+  { path: 'cocktail/:cocktailId', component: CocktailDetailComponent },
+  { path: '', component: HomeComponent }
+];
 
 @NgModule({
   declarations: [
@@ -25,7 +33,9 @@ import { CocktailListComponent } from './cocktail-list.component';
     SearchComponent,
     IngredientComponent,
     CocktailComponent,
-    CocktailListComponent
+    CocktailListComponent,
+    CocktailDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,8 @@ import { CocktailListComponent } from './cocktail-list.component';
     FontAwesomeModule,
     MatButtonModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(routes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ CocktailDbService, IngredientService ],

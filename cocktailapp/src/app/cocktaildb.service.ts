@@ -37,4 +37,12 @@ export class CocktailDbService {
     getCocktailsByIngredientsList(list: string) {
         return this.http.get(this.apiUrl + `filter.php?i=${list}`);
     }
+
+    /**
+     * Search for a cocktail by its id.
+     * @param id The id of the cocktail to lookup.
+     */
+    getCocktailById(id: string) {
+        return this.http.get(this.apiUrl + `lookup.php?i=${id}`);
+    }
 }

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Ingredient } from './ingredient.interface';
 
 @Injectable()
 export class IngredientService {
 
-    private ingredients = new BehaviorSubject<string>('');
+    private ingredients = new Subject<string>();
     currentIngredients = this.ingredients.asObservable();
 
     ingredientList: Array<Ingredient>;
