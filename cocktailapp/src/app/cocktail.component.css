@@ -3,10 +3,23 @@
     min-width: 200px;
     min-height: 200px;
     max-width: 200px;
-    max-height: 200px;
+    max-height: 250px;
     margin: 10px;
+    text-align: center;
+}
+
+.mat-card {
+    padding: 16px 0;
 }
 
 .cocktail:hover {
     cursor: pointer;
+}
+
+.cocktail.mat-card {
+    overflow: hidden;
+}
+
+.cocktail-img {
+    object-fit: cover;
 }

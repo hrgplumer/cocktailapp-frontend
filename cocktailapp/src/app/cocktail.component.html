@@ -1,6 +1,6 @@
 <mat-card class="cocktail" [routerLink]="['/cocktail', cocktail.id]">
     <mat-card-content>
         <p class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</p>
-        <img class="img-fluid" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}"/>
+        <img class="img-fluid cocktail-img" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}"/>
     </mat-card-content>
 </mat-card>
