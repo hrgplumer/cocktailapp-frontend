@@ -9,7 +9,6 @@ import { CocktailDbService } from './cocktaildb.service';
     styleUrls: ['./cocktail-detail.component.css']
 })
 export class CocktailDetailComponent implements OnInit {
-
     cocktail: Cocktail;
 
     constructor(private api: CocktailDbService, private route: ActivatedRoute, private router: Router) { }

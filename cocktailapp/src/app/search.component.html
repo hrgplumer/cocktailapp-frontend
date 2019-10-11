@@ -7,7 +7,7 @@
   <mat-card-content>
     <mat-form-field>
       <input type="text" placeholder="Add your ingredients" aria-label="Ingredient" matInput
-        [(ngModel)]="ingredientSelection" [matAutocomplete]="auto">
+        [(ngModel)]="ingredientSelection" [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
