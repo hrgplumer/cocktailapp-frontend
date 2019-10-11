@@ -1,13 +1,13 @@
 <mat-card class="cocktail" *ngIf="cocktail">
     <mat-card-content>
         <p class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</p>
-        <div class="cocktail-description">
-            {{cocktail.instructions}}
-        </div>
         <div class="cocktail-ingredients">
             <div *ngFor="let ing of cocktail.ingredients">
                 {{ing.ingredient}}: {{ing.measure}}
             </div>
+        </div>
+        <div class="cocktail-description">
+            {{cocktail.instructions}}
         </div>
         <img class="img-fluid" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}"/>
     </mat-card-content>

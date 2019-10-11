@@ -1,11 +1,10 @@
-<mat-card class="ingredient">
-    <mat-card-content>
-        <button mat-raised-button color="warn" (click)="delete()" class="deleteIcon">
-            <fa-icon [icon]="faTrash"></fa-icon>
-        </button>
-        <p class="ingredient-name">{{ingredient.name || 'New Ingredient' }}</p>
-        <p class="ingredient-desc">
-            {{ingredient.description}}
-        </p>
-    </mat-card-content>
-</mat-card>
+<div class="ingredient">
+    <button mat-raised-button color="warn" (click)="delete()" class="deleteIcon">
+        <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+</div>
+<div class="ingredient-detail">
+    <p class="ingredient-desc">
+        {{ingredient.description}}
+    </p>
+</div>

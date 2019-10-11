@@ -14,9 +14,16 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <div class="ingredients-list">
-      <ingredient *ngFor="let ing of ingService.ingredientList" [ingredient]="ing" (deleted)="onIngredientDeleted($event)">
-      </ingredient>
-    </div>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let ing of ingService.ingredientList">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ing.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ingredient [ingredient]="ing" (deleted)="onIngredientDeleted($event)">
+        </ingredient>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
 </mat-card>

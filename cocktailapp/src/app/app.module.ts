@@ -12,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule} from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 import { SearchComponent } from './search.component';
 import { IngredientComponent } from './ingredient.component';
@@ -51,6 +53,7 @@ const routes = [
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(routes),
+    MatExpansionModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ CocktailDbService, IngredientService ],
