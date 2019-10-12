@@ -48,15 +48,7 @@ export class SearchComponent implements OnInit {
         this.api.getIngredientByName(ingredient).subscribe(
             (ing: any) => {
                 let theIngredient = ing.ingredients[0];
-
-                let newIngredient = <Ingredient>{
-                    id: theIngredient.idIngredient,
-                    name: theIngredient.strIngredient,
-                    description: theIngredient.strDescription,
-                    type: theIngredient.strType,
-                    abv: theIngredient.strABV
-                };
-
+                let newIngredient = this.mapIngredient(theIngredient);
                 callback(newIngredient);
             },
             (err) => {
@@ -80,6 +72,20 @@ export class SearchComponent implements OnInit {
      */
     onIngredientDeleted(ingredient: string) {
         this.ingService.removeIngredient(ingredient);
+    }
+
+    private formatAbv(abv: string): string {
+        return abv? abv + '%': '';
+    }
+
+    private mapIngredient(data: any): Ingredient {
+        return <Ingredient>{
+            id: data.idIngredient,
+            name: data.strIngredient,
+            description: data.strDescription,
+            type: data.strType,
+            abv: this.formatAbv(data.strABV)
+        };
     }
 
     /* Utility method required for autocomplete control */

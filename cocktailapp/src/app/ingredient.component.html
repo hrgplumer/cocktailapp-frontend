@@ -3,8 +3,11 @@
         <fa-icon [icon]="faTrash"></fa-icon>
     </button>
 </div>
-<div class="ingredient-detail">
-    <p class="ingredient-desc">
+<div class="ingredient-detail" *ngIf="ingredient.description">
+    <section>
         {{ingredient.description}}
-    </p>
+    </section>
+    <aside class="abv">
+        <strong>{{ingredient.abv}} ABV</strong>
+    </aside>
 </div>

@@ -10,6 +10,10 @@
     margin-bottom: 10px;
 }
 
+.abv {
+	margin-top: 10px;
+}
+
 /* Scrollbar from https://codepen.io/devstreak/pen/dMYgeO */
 .ingredient-detail::-webkit-scrollbar-track
 {
