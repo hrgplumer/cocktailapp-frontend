@@ -12,3 +12,7 @@
     justify-content: center space-around;
     align-content: space-around;
 }
+
+.search-card {
+    background: rgba(238, 230, 230, 0.644);
+}

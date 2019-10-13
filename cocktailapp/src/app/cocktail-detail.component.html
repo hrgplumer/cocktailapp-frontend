@@ -1,14 +1,35 @@
-<mat-card class="cocktail" *ngIf="cocktail">
-    <mat-card-content>
-        <p class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</p>
-        <div class="cocktail-ingredients">
-            <div *ngFor="let ing of cocktail.ingredients">
-                {{ing.ingredient}}: {{ing.measure}}
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <mat-card class="cocktail" *ngIf="cocktail">
+                <mat-card-content>
+                    <p class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</p>
+                    <div class="cocktail-ingredients">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ingredient</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ing of cocktail.ingredients">
+                                    <td>
+                                        {{ing.ingredient}}
+                                    </td>
+                                    <td>
+                                        {{ing.measure}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cocktail-description">
+                        {{cocktail.instructions}}
+                    </div>
+                    <img class="img-fluid cocktail-img" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}" />
+                </mat-card-content>
+            </mat-card>
         </div>
-        <div class="cocktail-description">
-            {{cocktail.instructions}}
-        </div>
-        <img class="img-fluid" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}"/>
-    </mat-card-content>
-</mat-card>
+    </div>
+</div>
