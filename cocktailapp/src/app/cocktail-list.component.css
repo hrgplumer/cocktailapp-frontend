@@ -4,9 +4,9 @@
     flex-wrap: wrap;
     justify-content: center space-around;
     align-content: space-around;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
-    max-height: 100rem;
+    /* max-height: 100rem; */
 }
 
 .cocktail-card {
