@@ -6,11 +6,12 @@
     align-content: space-around;
     overflow: scroll;
     overflow-x: hidden;
-    max-height: 90vh;
+    max-height: 100rem;
 }
 
 .cocktail-card {
-    background: rgba(238, 230, 230, 0.644);
+	/* background: rgba(238, 230, 230, 0.644); */
+	background-color: #97caef;
 }
 
 /* Scrollbar from https://codepen.io/devstreak/pen/dMYgeO */

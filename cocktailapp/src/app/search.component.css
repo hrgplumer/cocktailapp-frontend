@@ -14,5 +14,6 @@
 }
 
 .search-card {
-    background: rgba(238, 230, 230, 0.644);
+    /* background: rgba(238, 230, 230, 0.644); */
+    background-color: #97caef;
 }
