@@ -22,6 +22,7 @@ import { CocktailComponent } from './cocktail.component';
 import { CocktailListComponent } from './cocktail-list.component';
 import { CocktailDetailComponent } from './cocktail-detail.component';
 import { HomeComponent } from './home.component';
+import { UtilitiesService } from './utilities.service';
 
 const routes = [
   { path: 'cocktail/:cocktailId', component: CocktailDetailComponent },
@@ -55,7 +56,7 @@ const routes = [
     MatExpansionModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [CocktailDbService, IngredientService],
+  providers: [CocktailDbService, IngredientService, UtilitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

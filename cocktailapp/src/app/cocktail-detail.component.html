@@ -4,6 +4,9 @@
             <mat-card class="cocktail" *ngIf="cocktail">
                 <mat-card-content>
                     <h2 class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</h2>
+                    <button mat-raised-button color="primary" (click)="back()" class="back-button">
+                        <fa-icon [icon]="faArrowLeft"></fa-icon>
+                    </button>
                     <div class="cocktail-ingredients">
                         <table class="table table-striped">
                             <thead>

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Ingredient } from './ingredient.interface';
+import { UtilitiesService } from './utilities.service';
 
 @Injectable()
 export class IngredientService {
-
     private ingredients = new Subject<string>();
     currentIngredients = this.ingredients.asObservable();
-
     ingredientList: Array<Ingredient>;
 
-    constructor() {
+    constructor(private utils: UtilitiesService) {
         this.ingredientList = new Array<Ingredient>();
     }
 
@@ -40,11 +39,13 @@ export class IngredientService {
      * Updates the ingredients observable with the latest list of ingredients.
      */
     updateIngredients() {
-        this.ingredients.next(this.joinList<Ingredient>(this.ingredientList, ',', (ing) => ing.name));
+        this.ingredients.next(this.utils.joinList<Ingredient>(this.ingredientList, ',', (ing) => ing.name));
     }
 
-    private joinList<T>(list: Array<T>, char: string, mapper): string {
-        return list.map(mapper).join(char);
+    /**
+     * Get the current ingredients list as a comma delimited string.
+     */
+    getIngredients() {
+        return this.utils.joinList<Ingredient>(this.ingredientList, ',', (ing) => ing.name);
     }
-
 }

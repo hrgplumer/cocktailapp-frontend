@@ -11,6 +11,14 @@
     margin-top: 20px;
 }
 
+.cocktail-name {
+    display: inline-block;
+}
+
+.back-button {
+    float: right;
+}
+
 .cocktail-description {
     /* background-color: rgba(0, 0, 0, 0.3); */
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0)));
