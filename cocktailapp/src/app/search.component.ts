@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
 
     ingredientSelection: string;
 
-    constructor(private api: CocktailDbService, private ingService: IngredientService) {
+    constructor(private api: CocktailDbService, public ingService: IngredientService) {
     }
 
     ngOnInit() {
