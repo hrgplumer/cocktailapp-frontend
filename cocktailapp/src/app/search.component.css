@@ -1,19 +1,28 @@
+:root {
+  --font: Georgia, Times, "Times New Roman" !important;
+}
+
 .header-image {
-    background-image: url("../assets/img/martini-128.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+  background-image: url("../assets/img/martini-128.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .ingredients-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center space-around;
-    align-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center space-around;
+  align-content: space-around;
+}
+
+.panel-ingredient {
+  font-family: var(--font);
 }
 
 .search-card {
-    /* background: rgba(238, 230, 230, 0.644); */
-    background-color: #97caef;
+  /* background: rgba(238, 230, 230, 0.644); */
+  background-color: #97caef;
+  font-family: var(--font);
 }

@@ -8,8 +8,8 @@ body {
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 body {
-  background-color: #11a9e2;
-  background-image: -webkit-gradient(
+  /* background-color: #11a9e2; */
+  /* background-image: -webkit-gradient(
     linear,
     0 0,
     0 100%,
@@ -17,10 +17,12 @@ body {
     to(#11a9e2)
   );
   background-image: -moz-linear-gradient(#0d86b3, #11a9e2);
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-image: url("../src/assets/img/danscafe.jpg");
+  background-size: cover;
   padding: 100px;
   /* text-rendering: optimizeLegibility; */
-  font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Georgia, Times, "Times New Roman";
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
