@@ -29,7 +29,15 @@ export class CocktailListComponent implements OnInit {
     observeIngredientChanges() {
         // Flatten nested observable
         const pipe = this.ingService.currentIngredients.pipe(
-            concatMap(res => this.api.getCocktailsByIngredientsList(res))
+            concatMap((res) => {
+                if (!res) {
+                    // If res is empty, reset cocktails and return empty array. For some reason the cocktail api will return
+                    // some random cocktails even if you query it with an empty string. So we have to do this to avoid that.
+                    this.cocktails = [];
+                    return [];
+                }
+                return this.api.getCocktailsByIngredientsList(res);
+            })
         );
 
         // Map the array to a list of cocktails

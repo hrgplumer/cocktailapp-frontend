@@ -1,17 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 
-html, body { height: 100%; }
+:root,
+body {
+  height: 100%;
+}
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 body {
-    background-color: #11a9e2;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0d86b3), to(#11a9e2));
-    background-image: -moz-linear-gradient(#0d86b3, #11a9e2);
-    background-repeat: no-repeat;
-    padding: 100px;
-    /* text-rendering: optimizeLegibility; */
-    font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #11a9e2;
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from(#0d86b3),
+    to(#11a9e2)
+  );
+  background-image: -moz-linear-gradient(#0d86b3, #11a9e2);
+  background-repeat: no-repeat;
+  padding: 100px;
+  /* text-rendering: optimizeLegibility; */
+  font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-basis: content;
+}
+
+/* .box > .component {
+  
+} */

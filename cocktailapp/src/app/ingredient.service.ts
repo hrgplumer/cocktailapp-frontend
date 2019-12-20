@@ -39,7 +39,8 @@ export class IngredientService {
      * Updates the ingredients observable with the latest list of ingredients.
      */
     updateIngredients() {
-        this.ingredients.next(this.utils.joinList<Ingredient>(this.ingredientList, ',', (ing) => ing.name));
+        const updatedIngredients = this.utils.joinList<Ingredient>(this.ingredientList, ',', (ing) => ing.name);
+        this.ingredients.next(updatedIngredients);
     }
 
     /**
