@@ -1,29 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
-/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
-
 :root,
 body {
   height: 100%;
+  --font: Georgia, Times, "Times New Roman";
 }
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 body {
-  /* background-color: #11a9e2; */
-  /* background-image: -webkit-gradient(
-    linear,
-    0 0,
-    0 100%,
-    from(#0d86b3),
-    to(#11a9e2)
-  );
-  background-image: -moz-linear-gradient(#0d86b3, #11a9e2);
-  background-repeat: no-repeat; */
-  background-image: url("../src/assets/img/danscafe.jpg");
-  background-size: cover;
   padding: 100px;
-  /* text-rendering: optimizeLegibility; */
-  font-family: Georgia, Times, "Times New Roman";
+  font-family: var(--font);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
+  /* Background animation by Manuel Pinto https://codepen.io/P1N2O/pen/pyBNzX */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .fade-in {
@@ -49,6 +50,16 @@ body {
   flex-basis: content;
 }
 
-/* .box > .component {
-  
-} */
+/* angular material style overrides */
+.mat-input-element,
+.mat-option-text,
+.mat-form-field-infix,
+.mat-expansion-panel-header-title,
+.ingredient-detail {
+  font-family: var(--font) !important;
+}
+
+.cocktail-card,
+.search-card {
+  border: 2px solid black;
+}

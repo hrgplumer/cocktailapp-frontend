@@ -1,38 +1,43 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <mat-card class="cocktail" *ngIf="cocktail">
-                <mat-card-content>
-                    <h2 class="cocktail-name">{{cocktail.name || 'New Ingredient' }}</h2>
-                    <button mat-raised-button color="primary" (click)="back()" class="back-button">
-                        <fa-icon [icon]="faArrowLeft"></fa-icon>
-                    </button>
-                    <div class="cocktail-ingredients">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Ingredient</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let ing of cocktail.ingredients">
-                                    <td>
-                                        {{ing.ingredient}}
-                                    </td>
-                                    <td>
-                                        {{ing.measure}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="cocktail-description">
-                        {{cocktail.instructions}}
-                    </div>
-                    <img class="img-fluid cocktail-img" src="{{cocktail.thumbnail}}" alt="{{cocktail.name}}" />
-                </mat-card-content>
-            </mat-card>
-        </div>
+<div class="wrapper">
+  <div class="cocktail-detail">
+    <h2 class="cocktail-name">{{ cocktail.name || "New Ingredient" }}</h2>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="back()"
+      class="back-button"
+    >
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+    </button>
+    <div class="cocktail-ingredients">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Ingredient</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ing of cocktail.ingredients">
+            <td>
+              {{ ing.ingredient }}
+            </td>
+            <td>
+              {{ ing.measure }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <div class="cocktail-description">
+      <strong>Instructions: </strong>{{ cocktail.instructions }}
+    </div>
+    <div class="img-wrap">
+      <img
+        class="img-fluid cocktail-img"
+        src="{{ cocktail.thumbnail }}"
+        alt="{{ cocktail.name }}"
+      />
+    </div>
+  </div>
 </div>
