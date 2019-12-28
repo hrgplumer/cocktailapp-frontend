@@ -21,10 +21,16 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
+  transition: font-size 0.25s ease-out, line-height 0.25s ease-out;
 }
 
 .cocktail::hover {
   cursor: pointer;
+}
+
+.cocktail-name:hover {
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
 
 .cocktail.mat-card {
